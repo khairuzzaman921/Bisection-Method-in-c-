@@ -1,0 +1,49 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+
+double function(double x)
+{
+    return x*x-200;
+}
+
+double bisection (double a,double b,double tolerance)
+{
+    double c;
+    int i=0;
+    while((b-a)>=tolerance)
+    {
+        c=(a+b)/2;
+        if(function(c)==0.00)
+        {
+            cout<<"Exact value"<<endl;
+            return c;
+        }
+            if(function(a)*function(c)<0)
+            {
+                b=c;
+            }
+            else
+            {
+                 a=c;
+                i++;
+                cout<<"Iteration  :"<<i<<endl;
+            }
+
+
+
+        }
+        cout<<"Not exact value"<<endl;
+        return (a+b)/2;
+    }
+
+    int main()
+    {
+        double a,b,tolerance;
+        a=1;
+        b=3.00;
+        tolerance=0.0001;
+        int root;
+        root=bisection(a,b,tolerance);
+        cout<<"Approximate root:"<<root<<endl;
+    }
